@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400..800&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --accent-color: #0bc12c;
+  --base-color: rgba(255, 255, 255, 0.7);
+  --text-color: #413584;
+  --input-color: #e3f9ee;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: Hind Siliguri, Segoe UI, sans-serif;
+  font-size: 12pt;
+  color: var(--text-color);
+  text-align: center;
+}
+
+body {
+  min-height: 100vh;
+  background-image: url(Photo/background.jpeg);
+  background-size: cover;
+  background-position: right;
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+}
+
+.blinking-text {
+  font-size: 1rem; 
+  color: #d42222 ;
+  animation: blink-animation 1s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+/* Style the Custom Dropdown */
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+.dropdown-selected {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 17px; /* Match input height */
+  padding: 1em;
+  background-color: var(--input-color);
+  border: 1px solid var(--input-color); /* Match border of other inputs */
+  border-radius: 10px; /* Match border-radius */
+  cursor: pointer;
+}
+
+.dropdown-selected span {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.department-logo {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+.dropdown-options {
+  display: none;
+  position: absolute;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 2px solid var(--input-color); /* Match input border */
+  margin-top: 5px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+.dropdown-option {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-option:hover {
+  background-color: var(--accent-color);
+  color: var(--base-color);
+}
+
+.dropdown-option img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.custom-dropdown.open .dropdown-options {
+  display: block;
+}
+
+input[type="hidden"] {
+  display: none;
+}
+
+form .custom-dropdown {
+  width: 100%;
+  margin-bottom: 8px; /* Add some margin to keep spacing consistent */
+}
+
+form .custom-dropdown .dropdown-selected {
+  width: 100%; /* Ensure it takes the full width of the form */
+}
+
+
+.wrapper {
+  box-sizing: border-box;
+  background-color: var(--base-color);
+  width: max(40%, 600px);
+  padding: 10px;
+  border-radius: 20px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+form {
+  width: min(400px, 100%);
+  margin-top: 20px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+form > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+form label {
+  flex-shrink: 0;
+  height: 50px;
+  width: 50px;
+  background-color: var(--accent-color);
+  fill: var(--base-color);
+  color: var(--base-color);
+  border-radius: 10px 0 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+form input {
+  box-sizing: border-box;
+  flex-grow: 1;
+  min-width: 0;
+  height: 50px;
+  padding: 1em;
+  font: inherit;
+  border-radius: 0 10px 10px 0;
+  border: 2px solid var(--input-color);
+  border-left: none;
+  background-color: var(--input-color);
+  transition: 150ms ease;
+}
+
+form input:hover {
+  border-color: var(--accent-color);
+}
+
+form input:focus {
+  outline: none;
+  border-color: var(--text-color);
+}
+
+div:has(input:focus) > label {
+  background-color: var(--text-color);
+}
+
+form input::placeholder {
+  color: var(--text-color);
+}
+
+form button {
+  margin-top: 10px;
+  border: none;
+  border-radius: 1000px;
+  padding: .85em 4em;
+  background-color: var(--accent-color);
+  color: var(--base-color);
+  font: inherit;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 150ms ease;
+}
+
+form button:hover {
+  background-color: var(--text-color);
+}
+
+form button:focus {
+  outline: none;
+  background-color: var(--text-color);
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+@media(max-width: 1100px) {
+  .wrapper {
+    width: min(600px, 100%);
+    border-radius: 0;
+  }
+}
+
+form div.incorrect label {
+  background-color: #f06272;
+}
+
+form div.incorrect input {
+  border-color: #f06272;
+}
+
+#error-message {
+  color: #fa0f0f;
+}
